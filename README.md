@@ -17,4 +17,9 @@ code steps:
 - connect to mongoDB using the import syntax (hide secure info)
 - connect to mongo db - go to mongodb and look for driver 
 - establish connection to server 
+- do a get request
+
+# useful links 
+
+- dotenv documentation - https://www.npmjs.com/package/dotenv 
 - 

@@ -23,3 +23,4 @@ code steps:
 
 - dotenv documentation - https://www.npmjs.com/package/dotenv 
 - mongodb documentation- https://www.mongodb.com/docs/manual/
+- reqbin - testing routes - https://reqbin.com/ 

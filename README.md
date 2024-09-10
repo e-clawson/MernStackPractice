@@ -18,6 +18,8 @@ code steps:
 - connect to mongo db - go to mongodb and look for driver 
 - establish connection to server 
 - do a get request
+- add other CRUD actions 
+- test routes 
 
 # useful links 
 

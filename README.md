@@ -14,5 +14,7 @@ setup steps:
 9. run 'import 'dotenv/config''
 
 code steps: 
--  connect to mongoDB using the import syntax 
+- connect to mongoDB using the import syntax (hide secure info)
 - connect to mongo db - go to mongodb and look for driver 
+- establish connection to server 
+- 

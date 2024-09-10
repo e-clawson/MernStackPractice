@@ -34,20 +34,14 @@ app.get("/:id", async (req,res) => {
         //but we can specify exactly ewhat we want to look for - in this ones with an id property that matches _id (the request parameter)
         let query = {_id: new ObjectId(req.params.id) }; //assign it to a variable ObjectId is a class so we need new in front of it 
         let result = await collection.findOne(query); //pass the variable - can also use .find()
-        if (!result){
-            res.send("not found").status(404);
-        } else {
-            res.send(result).status(200);
-        }
+        if (!result) throw new Error("not found")
+            res.send(result).status(200)
     } catch (e){
         console.log(e)
         res.json(e).status(400)
     }
-
 })
         
-    
-
 app.listen(port, () => {
     console.log(`connected to server on port ${port}`)
 })

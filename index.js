@@ -6,6 +6,8 @@ const app = express()
 
 const port = 3000
 
+app.use(express.json())
+
 //turn it to an async funct so we can use await function
 app.get('/', async (req,res) => {
     try {
@@ -41,7 +43,37 @@ app.get("/:id", async (req,res) => {
         res.json(e).status(400)
     }
 })
-        
+
+app.post("/", async(req,res) =>{
+    try {
+        let collection = await db.collection("posts")
+        let newDocument = req.body;
+        newDocument.date = new Date();
+        let result = await collection.insertOne(newDocument)
+        res.send(result).status(201)
+    } catch (e) {
+        console.log(e)
+        res.json(e).status(400)
+    }
+})
+
+app.patch("/comment/:id", async(req,res) => {
+    try{ 
+        const query = { _id: new ObjectId(req.params.id)};
+        const updates = {
+            $push: { comments: req.body} //this is mongodb syntax - push operator 
+            //when we find the document we're pushing the new comment from the req. body to the comments array 
+        };
+        let collection = await db.collection("posts");
+        let result = await collection.updateOne(query, updates);
+        res.send(result).status(200)
+    } catch (e) {
+        console.log(e)
+        res.json(e).status(400)
+    }
+})
+
+
 app.listen(port, () => {
     console.log(`connected to server on port ${port}`)
 })

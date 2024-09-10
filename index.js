@@ -73,6 +73,17 @@ app.patch("/comment/:id", async(req,res) => {
     }
 })
 
+app.delete("/:id", async(req,res) =>{
+    try {
+       const query = { _id: new ObjectId(req.params.id)}
+       const collection = db.collection("posts");
+       let result = await collection.deleteOne(query) 
+       res.send(result.status(200))
+    } catch (e) {
+        console.log(e)
+        res.json(e).status(400)
+    }
+})
 
 app.listen(port, () => {
     console.log(`connected to server on port ${port}`)
